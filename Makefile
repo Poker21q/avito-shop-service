@@ -1,4 +1,4 @@
-.PHONY: run down go test test_k6 cover check
+.PHONY: run test cover
 
 run:
 	docker compose up
