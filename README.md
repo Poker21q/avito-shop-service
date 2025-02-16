@@ -41,7 +41,19 @@ A service designed for internal use, enabling employees to exchange virtual coin
 
 - **Зависимость от драйвера `database/sql` в репозитории**: в репозитории существует зависимость от драйвера, что затрудняет создание универсального интерфейса для выполнения запросов как внутри транзакции, так и вне её.
 
-1. Для запуска:
+1. Запуск:
 
    ```bash
-   docker compose up
+   make run
+
+2. Тесты:
+
+   ```bash
+   make test
+
+3. Покрытие:
+
+   ```bash
+   cover
+
+

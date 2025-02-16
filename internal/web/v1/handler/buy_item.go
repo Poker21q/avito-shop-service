@@ -2,7 +2,6 @@ package handler
 
 import (
 	"context"
-	"merch/internal/web/v1/pkg/ctxkey"
 	"merch/internal/web/v1/pkg/response"
 	"net/http"
 
@@ -31,7 +30,7 @@ func NewBuyItemHandler(service PurchaseService, logger PurchaseLogger) *BuyItemH
 }
 
 func (h *BuyItemHandler) Handle(w http.ResponseWriter, r *http.Request) {
-	userID, ok := r.Context().Value(ctxkey.UserIDKey).(string)
+	userID, ok := r.Context().Value("user_id").(string)
 	if !ok || userID == "" {
 		h.Logger.Error("error extracting user_id from context or user_id is empty")
 		response.Error(w, http.StatusUnauthorized)

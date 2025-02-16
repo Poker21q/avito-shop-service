@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"merch/internal/web/v1/dto"
-	"merch/internal/web/v1/pkg/ctxkey"
 	"merch/internal/web/v1/pkg/response"
 	"net/http"
 )
@@ -31,7 +30,7 @@ func NewSendCoinHandler(service CoinService, logger CoinLogger) *SendCoinHandler
 }
 
 func (h *SendCoinHandler) Handle(w http.ResponseWriter, r *http.Request) {
-	fromUser, ok := r.Context().Value(ctxkey.UserIDKey).(string)
+	fromUser, ok := r.Context().Value("user_id").(string)
 	if !ok || fromUser == "" {
 		h.Logger.Error("error extracting user_id from context")
 		response.Error(w, http.StatusUnauthorized)

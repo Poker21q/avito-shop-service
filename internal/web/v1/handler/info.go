@@ -4,7 +4,6 @@ import (
 	"context"
 	"merch/internal/domain"
 	"merch/internal/web/v1/dto"
-	"merch/internal/web/v1/pkg/ctxkey"
 	"merch/internal/web/v1/pkg/response"
 	"net/http"
 )
@@ -31,7 +30,7 @@ func NewInfoHandler(service InfoService, logger InfoLogger) *InfoHandler {
 }
 
 func (h *InfoHandler) Handle(w http.ResponseWriter, r *http.Request) {
-	userID, ok := r.Context().Value(ctxkey.UserIDKey).(string)
+	userID, ok := r.Context().Value("user_id").(string)
 	if !ok || userID == "" {
 		h.Logger.Error("error extracting user_id from context")
 		response.Error(w, http.StatusUnauthorized)

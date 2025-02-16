@@ -8,6 +8,3 @@ test:
 
 cover: test
 	@go tool cover -func=coverage.out
-
-check:
-	@golangci-lint run

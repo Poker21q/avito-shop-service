@@ -3,7 +3,6 @@ package middleware
 import (
 	"context"
 	"github.com/golang-jwt/jwt/v4"
-	"merch/internal/web/v1/pkg/ctxkey"
 	"merch/internal/web/v1/pkg/response"
 	"net/http"
 	"strings"
@@ -58,7 +57,7 @@ func (j *JWT) Authenticate(next http.Handler) http.Handler {
 		}
 
 		j.logger.Info("authentication successful for user: " + userID)
-		ctx := context.WithValue(r.Context(), ctxkey.UserIDKey, userID)
+		ctx := context.WithValue(r.Context(), "user_id", userID)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
