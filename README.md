@@ -51,6 +51,6 @@ A service designed for internal use, enabling employees to exchange virtual coin
 3. Покрытие:
 
    ```bash
-   cover
+   make cover
 
 
