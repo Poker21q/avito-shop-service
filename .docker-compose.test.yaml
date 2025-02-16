@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   avito-shop-service-test:
-    build: ..
+    build: .
     container_name: avito-shop-service-test
     ports:
       - "8081:8080"
@@ -32,7 +32,7 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d shop'"]
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U postgres -d shop'" ]
       interval: 5s
       timeout: 10s
       retries: 5

@@ -12,7 +12,7 @@ const baseURL = "http://localhost:8081/api/"
 
 func TestMain(m *testing.M) {
 	startDocker()
-	time.Sleep(10 * time.Second)
+	time.Sleep(30 * time.Second)
 	exitCode := m.Run()
 	stopDocker()
 	os.Exit(exitCode)
